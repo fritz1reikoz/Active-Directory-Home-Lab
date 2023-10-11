@@ -1,3 +1,5 @@
+![HeaderPix](https://github.com/fritz1reikoz/Active-Directory-Home-Lab/assets/55414490/8acbe3f3-7642-4a49-af93-6753a901816c)
+
 <h2>Introduction</h2>
 Active Directory, developed by Microsoft, is a powerful directory service that centralizes user management, enhances security, and simplifies administrative tasks within a network environment. It offers an excellent opportunity to gain hands-on experience and establish a strong foundation in this essential technology by setting up a home lab.
 
