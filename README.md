@@ -126,20 +126,20 @@ Perform the following steps on both machines:
 - When prompted to add an account, skip and restart the machine.
 - Upon restart, select the other user and log in as the domain user (e.g., saul with the password Password123).
   
-- Give local administrator rights:
+- <h4>Give local administrator rights:</h4>
 1. Go to “Computer Management” > “Local Users and Groups” > “Groups”.
 2. Double-click on “Administrators”.
 3. Add the user (e.g., saul), check the name, apply, and click OK.
 
-- Turn on Network Discovery:
+- <h4>Turn on Network Discovery:</h4>
 1. Go to “Computer” > “Network”.
 2. Click OK when prompted and click “Turn on network discovery…” in the top menu bar.
 
-- Verify that both computers have joined the domain:
+- <h4>Verify that both computers have joined the domain:</h4>
 1. On the Domain Controller, open “Active Directory Users and Computers” > ADHACKING.local > "Computers".
 2. Check if both computers are added.
 
-- Set up for mitm6 attack lab example:
+- <h4>Set up for mitm6 attack lab example:</h4>
 
 1. Login to the Domain Controller.
 2. Open Server Manager > Dashboard > “Add roles and features” > Next.
