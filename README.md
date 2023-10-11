@@ -1,10 +1,10 @@
-<2>Introduction</2>
+<h2>Introduction</h2>
 Active Directory, developed by Microsoft, is a powerful directory service that centralizes user management, enhances security, and simplifies administrative tasks within a network environment. It offers an excellent opportunity to gain hands-on experience and establish a strong foundation in this essential technology by setting up a home lab.
 
 <2>Objective</2>
 This project aims to guide individuals, from beginners to those with advanced knowledge, through the process of creating a basic home lab with Active Directory. By creating a fully functional Active Directory environment, users can learn, experiment, and simulate real-world scenarios.
 
-<2>Lab Setup</2>
+<h2>Lab Setup</h2>
 Using VMWare Workstation 15 Player, set up the following virtual machines:
 
 - 1 x Windows Server 2019 (Domain controller)
@@ -16,21 +16,21 @@ Each virtual machine should have approximately 2GB of RAM, totaling 8GB RAM for 
 
 Download the required ISO from the official Microsoft Evaluation Center website: https://www.microsoft.com/en-us/evalcenter/
 
-<2>Virtual Machine Setup</2>
+<h2>Virtual Machine Setup</h2>
 Remove floppy drives and set the network to NAT. Perform the following steps for each virtual machine:
 
-Domain Controller (OS Installation)
+<h1>Domain Controller</h1> (OS Installation)
 
-Create a new virtual machine.
-Select the ISO file for the installer disc image.
-Choose “Windows Server 2019” as the version to install.
-Power on the virtual machine after creation.
-In VM Settings, remove the floppy disk and set the network to NAT.
-Start the virtual machine and press any key to enter setup mode.
-Select “Windows Server 2019 Standard Eval (Desktop Experience)”.
-Choose “Custom install” and select the unallocated space for installation.
-Follow the on-screen instructions to complete the installation.
-Setting up Domain Controller
+- Create a new virtual machine.
+- Select the ISO file for the installer disc image.
+- Choose “Windows Server 2019” as the version to install.
+- Power on the virtual machine after creation.
+- In VM Settings, remove the floppy disk and set the network to NAT.
+- Start the virtual machine and press any key to enter setup mode.
+- Select “Windows Server 2019 Standard Eval (Desktop Experience)”.
+- Choose “Custom install” and select the unallocated space for installation.
+- Follow the on-screen instructions to complete the installation.
+- Setting up Domain Controller
 
 In the virtual machine settings, go to “View Your PC Name” and rename the PC to something like myDomainController. Restart the virtual machine.
 Set a password for the PC, such as P@$$w0rd.
@@ -41,18 +41,19 @@ After the installation, click the flag icon in Server Manager and select “Prom
 Choose “Add a new forest” and enter a root domain name like ADHACKING.local. Proceed with the installation, setting a password for DSRM (Directory Services Restore Mode) and accepting the default options.
 User Machine (OS Installation)
 
-Perform the following steps for each user machine:
+<h2>Perform the following steps for each user machine:</h2>
 
-Create a new virtual machine.
-Select the ISO file for the installer disc image.
-Choose “Windows 10 Enterprise” as the version to install.
-Power on the virtual machine after creation.
-In VM Settings, remove the floppy disk and set the network to NAT.
-Start the virtual machine and press any key to enter setup mode.
-Select “Custom install” and select the unallocated space for installation.
-Choose “Domain join instead” and enter an account name (e.g., saul goodman) and password (Password1).
-Proceed with the installation, selecting “No” for “Do more across devices…” and declining “Get help from digital assistant”. Choose your preferred privacy settings.
-Setting up User Machine
+- Create a new virtual machine.
+- Select the ISO file for the installer disc image.
+- Choose “Windows 10 Enterprise” as the version to install.
+- Power on the virtual machine after creation.
+- In VM Settings, remove the floppy disk and set the network to NAT.
+- Start the virtual machine and press any key to enter setup mode.
+- Select “Custom install” and select the unallocated space for installation.
+- Choose “Domain join instead” and enter an account name (e.g., saul goodman) and password (Password1).
+- Proceed with the installation, selecting “No” for “Do more across devices…” and declining “Get help from digital assistant”. Choose your preferred privacy settings.
+
+<h2>Setting up User Machine</h2>
 
 In VMWare Player, go to “Manage” and install VMWare Tools.
 In the virtual machine settings, go to “View Your PC Name” and rename the PC (e.g., Saul-PC). Restart the virtual machine.
