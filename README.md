@@ -19,7 +19,7 @@ Download the required ISO from the official Microsoft Evaluation Center website:
 <h2>Virtual Machine Setup</h2>
 Remove floppy drives and set the network to NAT. Perform the following steps for each virtual machine:
 
-<h3>Domain Controller (OS Installation)</h3>
+<h4>Domain Controller (OS Installation)</h4>
 
 - Create a new virtual machine.
 - Select the ISO file for the installer disc image.
