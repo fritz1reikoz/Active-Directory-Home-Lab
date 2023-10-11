@@ -76,7 +76,7 @@ Log in to the Windows Server
 - Copy the “administrator” domain admin account with the logon SQLService, password MYpassword123#, and description "Password is MYpassword123#".
 - Create a new user domain account with the logon saul and password Password123.
 - Create a new user domain account with the logon walter and password Password123.
-- 
+
 <b>Note:</b> It is generally not recommended to assign domain-admin rights to service accounts like SQL Service. Although this is a lab example, in real-life situations, granting domain-admin rights to such services should be avoided. Similarly, storing passwords in the description field is not a secure practice, i only do this because it's a homelab for testing.
 
 <h2>Configuring File Server (Opening SMB)</h2>
