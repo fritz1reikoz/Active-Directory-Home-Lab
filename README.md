@@ -16,6 +16,15 @@ Each virtual machine should have approximately 2GB of RAM, totaling 8GB RAM for 
 
 Download the required ISO from the official Microsoft Evaluation Center website: https://www.microsoft.com/en-us/evalcenter/
 
+![1](https://github.com/fritz1reikoz/Active-Directory-Home-Lab/assets/55414490/01106fbc-fc19-4f99-99f9-2204dcd44abf)
+![2](https://github.com/fritz1reikoz/Active-Directory-Home-Lab/assets/55414490/de8dac1e-1bc6-42f4-8303-33bc75e87236)
+![3](https://github.com/fritz1reikoz/Active-Directory-Home-Lab/assets/55414490/42223cf5-0e42-4d2e-9529-1628d9bc78a3)
+![4](https://github.com/fritz1reikoz/Active-Directory-Home-Lab/assets/55414490/4cd25f94-8be5-48e1-8904-840745bd8008)
+![5](https://github.com/fritz1reikoz/Active-Directory-Home-Lab/assets/55414490/bc7e1a49-3c1d-43a7-b750-fa9c2661e46c)
+![6](https://github.com/fritz1reikoz/Active-Directory-Home-Lab/assets/55414490/5c44cd10-82ff-4974-95d0-4afeb69d923c)
+![7](https://github.com/fritz1reikoz/Active-Directory-Home-Lab/assets/55414490/0a28af26-deae-4a69-bcf3-d2176ba12561)
+
+
 <h2>Virtual Machine Setup</h2>
 Remove floppy drives and set the network to NAT. Perform the following steps for each virtual machine:
 
