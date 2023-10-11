@@ -30,18 +30,20 @@ Remove floppy drives and set the network to NAT. Perform the following steps for
 - Select “Windows Server 2019 Standard Eval (Desktop Experience)”.
 - Choose “Custom install” and select the unallocated space for installation.
 - Follow the on-screen instructions to complete the installation.
-- Setting up Domain Controller
 
-In the virtual machine settings, go to “View Your PC Name” and rename the PC to something like myDomainController. Restart the virtual machine.
-Set a password for the PC, such as P@$$w0rd.
-In VMWare Player, go to “Manage” and install VMWare Tools.
-Open Server Manager and navigate to “Dashboard” > “Manage” > “Add Roles and Features”.
-Choose “Role-based or feature-based installation” and select the Active Directory Domain Services role. Continue with the installation.
-After the installation, click the flag icon in Server Manager and select “Promote this server to a domain controller”.
-Choose “Add a new forest” and enter a root domain name like ADHACKING.local. Proceed with the installation, setting a password for DSRM (Directory Services Restore Mode) and accepting the default options.
-User Machine (OS Installation)
+<h4>Setting up Domain Controller</h4>
 
-<h2>Perform the following steps for each user machine:</h2>
+- In the virtual machine settings, go to “View Your PC Name” and rename the PC to something like myDomainController. Restart the virtual machine.
+- Set a password for the PC, such as P@$$w0rd.
+- In VMWare Player, go to “Manage” and install VMWare Tools.
+- Open Server Manager and navigate to “Dashboard” > “Manage” > “Add Roles and Features”.
+- Choose “Role-based or feature-based installation” and select the Active Directory Domain Services role. Continue with the installation.
+- After the installation, click the flag icon in Server Manager and select “Promote this server to a domain controller”.
+- Choose “Add a new forest” and enter a root domain name like ADHACKING.local. Proceed with the installation, setting a password for DSRM (Directory Services Restore Mode) and accepting the default options.
+
+<h4>User Machine (OS Installation)</h4>
+
+Perform the following steps for each user machine:
 
 - Create a new virtual machine.
 - Select the ISO file for the installer disc image.
@@ -53,11 +55,12 @@ User Machine (OS Installation)
 - Choose “Domain join instead” and enter an account name (e.g., saul goodman) and password (Password1).
 - Proceed with the installation, selecting “No” for “Do more across devices…” and declining “Get help from digital assistant”. Choose your preferred privacy settings.
 
-<h2>Setting up User Machine</h2>
+<h4>Setting up User Machine</h4>
 
-In VMWare Player, go to “Manage” and install VMWare Tools.
-In the virtual machine settings, go to “View Your PC Name” and rename the PC (e.g., Saul-PC). Restart the virtual machine.
-Repeat these steps for the second user machine, using the account name walter white, password Password1, and PC name Walter-PC.
+- In VMWare Player, go to “Manage” and install VMWare Tools.
+- In the virtual machine settings, go to “View Your PC Name” and rename the PC (e.g., Saul-PC). Restart the virtual machine.
+- Repeat these steps for the second user machine, using the account name <i>walter white</i>, password Password1, and PC name Walter-PC.
+
 Active Directory (AD) Setup, Groups, and Policies
 Log in to the Windows Server
 
