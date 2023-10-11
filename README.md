@@ -1,7 +1,7 @@
 <h2>Introduction</h2>
 Active Directory, developed by Microsoft, is a powerful directory service that centralizes user management, enhances security, and simplifies administrative tasks within a network environment. It offers an excellent opportunity to gain hands-on experience and establish a strong foundation in this essential technology by setting up a home lab.
 
-<2>Objective</2>
+<h2>Objective</h2>
 This project aims to guide individuals, from beginners to those with advanced knowledge, through the process of creating a basic home lab with Active Directory. By creating a fully functional Active Directory environment, users can learn, experiment, and simulate real-world scenarios.
 
 <h2>Lab Setup</h2>
@@ -58,85 +58,96 @@ Perform the following steps for each user machine:
 <h4>Setting up User Machine</h4>
 
 - In VMWare Player, go to “Manage” and install VMWare Tools.
-- In the virtual machine settings, go to “View Your PC Name” and rename the PC (e.g., Saul-PC). Restart the virtual machine.
-- Repeat these steps for the second user machine, using the account name <i>walter white</i>, password Password1, and PC name Walter-PC.
+- In the virtual machine settings, go to “View Your PC Name” and rename the PC (e.g., <i>helpdesk</i>). Restart the virtual machine.
+- Repeat these steps for the second user machine, using the account name <i>walter white</i>, password <i>Password1</i>, and PC name <i>Walter-PC</i>.
 
-Active Directory (AD) Setup, Groups, and Policies
+<h2>Active Directory (AD) Setup, Groups, and Policies</h2>
+
 Log in to the Windows Server
 
 (Domain Controller) and perform the following steps:
 
-Open Server Manager and go to “Tools” > “Active Directory Users and Computers”.
-Right-click on the root domain (e.g., ADHACKING.local) and select "New" > "Organizational Unit" > "Groups".
-Move all users (except Administrator and Guest) from the “Users” directory to the “Groups” directory.
-Right-click under the “Users” directory and create the following users:
-Uncheck “User must change password at next logon” and check “Password never expires”.
-Copy the “administrator” domain admin account with the login gus and password Password2020@!.
-Copy the “administrator” domain admin account with the logon SQLService, password MYpassword123#, and description "Password is MYpassword123#".
-Create a new user domain account with the logon saul and password Password123.
-Create a new user domain account with the logon walter and password Password123.
-Note: It is generally not recommended to assign domain-admin rights to service accounts like SQL Service. Although this is a lab example, in real-life situations, granting domain-admin rights to such services should be avoided. Similarly, storing passwords in the description field is not a secure practice.
+- Open Server Manager and go to “Tools” > “Active Directory Users and Computers”.
+- Right-click on the root domain (e.g., ADHACKING.local) and select "New" > "Organizational Unit" > "Groups".
+- Move all users (except Administrator and Guest) from the “Users” directory to the “Groups” directory.
+- Right-click under the “Users” directory and create the following users:
+- Uncheck “User must change password at next logon” and check “Password never expires”.
+- Copy the “administrator” domain admin account with the login gus and password Password2020@!.
+- Copy the “administrator” domain admin account with the logon SQLService, password MYpassword123#, and description "Password is MYpassword123#".
+- Create a new user domain account with the logon saul and password Password123.
+- Create a new user domain account with the logon walter and password Password123.
+- 
+<b>Note:</b> It is generally not recommended to assign domain-admin rights to service accounts like SQL Service. Although this is a lab example, in real-life situations, granting domain-admin rights to such services should be avoided. Similarly, storing passwords in the description field is not a secure practice, i only do this because it's a homelab for testing.
 
-Configuring File Server (Opening SMB)
+<h2>Configuring File Server (Opening SMB)</h2>
+
 Enable SMB file sharing and open ports 445 and 139 for later lab activities.
 
-Open Server Manager and go to “Dashboard” > “File and Storage Services” > “Shares”.
-Click “New Share” > “SMB Share — Quick” > “Next”.
-Set the share name as “hackme” and follow the prompts to create the share.
-Creating Service Principal Name (SPN)
+- Open Server Manager and go to “Dashboard” > “File and Storage Services” > “Shares”.
+- Click “New Share” > “SMB Share — Quick” > “Next”.
+- Set the share name as “hackme” and follow the prompts to create the share.
+
+<h2>Creating Service Principal Name (SPN)</h2>
+
 Set up for a Kerberoasting attack.
 
-Open the Command Prompt as an administrator.
-Use the following command to set the SPN: setspn -a myDomainController/SQLService.ADHACKING.local:60111 ADHACKING\\\\SQLService.
-Check if the SPN is set using the command: setspn -T ADHACKING.local -Q */*.
-Group Policy Configuration
+- Open the Command Prompt as an administrator.
+- Use the following command to set the SPN: setspn -a myDomainController/SQLService.ADHACKING.local:60111 ADHACKING\\\\SQLService.
+- Check if the SPN is set using the command: setspn -T ADHACKING.local -Q */*.
+
+<h2>Group Policy Configuration</h2>
+
 Disable Windows Defender for lab purposes (note: topics like AV bypass and evasion are not covered in this lab).
 
-Open Group Policy Management as an administrator.
-Expand the Forest > Domains > ADHACKING.local.
-Right-click and create a new Group Policy Object (GPO) named “Disable Windows Defender” in this domain.
-Edit the newly created GPO.
-Navigate to “Computer Configuration” > “Policies” > “Administrative Templates” > “Windows Components” > “Windows Defender Antivirus”.
-Double-click on “Turn off Windows Defender Antivirus” and enable the policy.
-Connecting all Machines
+- Open Group Policy Management as an administrator.
+- Expand the Forest > Domains > ADHACKING.local.
+- Right-click and create a new Group Policy Object (GPO) named “Disable Windows Defender” in this domain.
+- Edit the newly created GPO.
+- Navigate to “Computer Configuration” > “Policies” > “Administrative Templates” > “Windows Components” > “Windows Defender Antivirus”.
+- Double-click on “Turn off Windows Defender Antivirus” and enable the policy.
+
+<h2>Connecting all Machines</h2>
+
 Perform the following steps on both machines:
 
-Create a folder and set up a network share.
-On the first machine, give the first domain user local administrator rights.
-On the second machine, give both domain users local administrator rights.
-Create a network share folder.
-Create a folder named “share” in the C: drive.
-Right-click on the folder, go to “Properties” > “Sharing” > “Share” > “Share” > “Yes, turn on network discovery…”.
-Configure network settings.
-Open network & internet settings, change adapter options, and go to IPv4 > Preferred DNS Server.
-Enter the IP address of the Domain Controller.
-Join the domain.
-Go to “Access work or school” > “Connect” > “Join this device to local Active Directory domain”.
-Enter the domain name as ADHACKING.local.
-Join the domain as the Administrator with the password P@$$w0rd.
-When prompted to add an account, skip and restart the machine.
-Upon restart, select the other user and log in as the domain user (e.g., saul with the password Password123).
-Give local administrator rights:
-Go to “Computer Management” > “Local Users and Groups” > “Groups”.
-Double-click on “Administrators”.
-Add the user (e.g., saul), check the name, apply, and click OK.
-17. Turn on Network Discovery:
+- Create a folder and set up a network share.
+- On the first machine, give the first domain user local administrator rights.
+- On the second machine, give both domain users local administrator rights.
+- Create a network share folder.
+- Create a folder named “share” in the C: drive.
+- Right-click on the folder, go to “Properties” > “Sharing” > “Share” > “Share” > “Yes, turn on network discovery…”.
+- Configure network settings.
+- Open network & internet settings, change adapter options, and go to IPv4 > Preferred DNS Server.
+- Enter the IP address of the Domain Controller.
+- Join the domain.
+- Go to “Access work or school” > “Connect” > “Join this device to local Active Directory domain”.
+- Enter the domain name as ADHACKING.local.
+- Join the domain as the Administrator with the password P@$$w0rd.
+- When prompted to add an account, skip and restart the machine.
+- Upon restart, select the other user and log in as the domain user (e.g., saul with the password Password123).
+  
+- Give local administrator rights:
+1. Go to “Computer Management” > “Local Users and Groups” > “Groups”.
+2. Double-click on “Administrators”.
+3. Add the user (e.g., saul), check the name, apply, and click OK.
 
-Go to “Computer” > “Network”.
-Click OK when prompted and click “Turn on network discovery…” in the top menu bar.
-18. Verify that both computers have joined the domain:
+- Turn on Network Discovery:
+1. Go to “Computer” > “Network”.
+2. Click OK when prompted and click “Turn on network discovery…” in the top menu bar.
 
-On the Domain Controller, open “Active Directory Users and Computers” > ADHACKING.local > "Computers".
-Check if both computers are added.
-19. Set up for mitm6 attack lab example:
+- Verify that both computers have joined the domain:
+1. On the Domain Controller, open “Active Directory Users and Computers” > ADHACKING.local > "Computers".
+2. Check if both computers are added.
 
-Login to the Domain Controller.
-Open Server Manager > Dashboard > “Add roles and features” > Next.
-Select “Active Directory Certificate Services” > Add features > Next.
-Choose to restart the destination server automatically and click Install.
-Click the flag notification icon and configure Active Directory services on the destination server.
-Provide the credentials as ADHACKING\\\\Administrator.
-Proceed with the configuration, selecting the Certification Authority and setting the validity to 99 years. Click Next and configure the settings.
+- Set up for mitm6 attack lab example:
+
+1. Login to the Domain Controller.
+2. Open Server Manager > Dashboard > “Add roles and features” > Next.
+3. Select “Active Directory Certificate Services” > Add features > Next.
+4. Choose to restart the destination server automatically and click Install.
+5. Click the flag notification icon and configure Active Directory services on the destination server.
+6. Provide the credentials as ADHACKING\\\\Administrator.
+7. Proceed with the configuration, selecting the Certification Authority and setting the validity to 99 years. Click Next and configure the settings.
 
 
 <h2>Conclusion</h2>
