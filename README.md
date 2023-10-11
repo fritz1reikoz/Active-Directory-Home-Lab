@@ -11,7 +11,7 @@ Using VMWare Workstation 15 Player, set up the following virtual machines:
 - 1 x Windows 10 Enterprise — User-machine 1
 - 1 x Windows 10 Enterprise — User-machine 2
 - 1 x Kali Linux — Attacker
-- 
+
 Each virtual machine should have approximately 2GB of RAM, totaling 8GB RAM for all machines.
 
 Download the required ISO from the official Microsoft Evaluation Center website: https://www.microsoft.com/en-us/evalcenter/
@@ -19,7 +19,7 @@ Download the required ISO from the official Microsoft Evaluation Center website:
 <h2>Virtual Machine Setup</h2>
 Remove floppy drives and set the network to NAT. Perform the following steps for each virtual machine:
 
-<h1>Domain Controller</h1> (OS Installation)
+<h3>Domain Controller (OS Installation)</h3>
 
 - Create a new virtual machine.
 - Select the ISO file for the installer disc image.
